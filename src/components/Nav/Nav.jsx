@@ -11,9 +11,7 @@ const Nav = () => {
                 <NavLink className={activeStyle} to="/">
                     Home
                 </NavLink>
-                <NavLink className={activeStyle} to="/products">
-                    Products
-                </NavLink>
+
                 <NavLink className={activeStyle} to="/cart">
                     Cart
                 </NavLink>

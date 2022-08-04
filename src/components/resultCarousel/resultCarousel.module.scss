@@ -1,0 +1,15 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
+
+.wrapper {
+    display: block;
+}
+
+.sliderImg {
+    display: block;
+    box-sizing: border-box;
+    height: 300px;
+    width: 100%;
+    padding: 0px 2vw;
+    object-fit: cover;
+}

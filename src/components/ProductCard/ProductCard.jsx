@@ -8,6 +8,7 @@ function ProductCard({ data }) {
     return (
         <div className={classes.Card}>
             <h2>{name}</h2>
+            <h3>{brand}</h3>
             <img
                 className={classes.Card_Image}
                 src={imageLink}
