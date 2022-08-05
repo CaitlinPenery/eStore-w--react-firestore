@@ -39,10 +39,6 @@ Using Firestore and react create, a cart system. Create a cart page in your reac
     -   Ability to change quantity of products in cart
     -   Ability to remove items from cart
 
--   TIPS :
-
-1. Make sure your site is scoped to one category of products
-
 ## Implementation
 
 <style>
@@ -56,9 +52,9 @@ Using Firestore and react create, a cart system. Create a cart page in your reac
 ### <red>Home Page</red>
 
 -   <yellow>Navigation</yellow>
--   <yellow>Search Bar</yellow>
+-   <yellow>Search Bar</yellow> (Not MVP)
 -   <red>Product List</red>
-    -   <yellow>Featured Product Cards</yellow>
+    -   <yellow>Carousel</yellow>
     -   <yellow>Product Cards</yellow>
 
 ### <red>Expanded Product Page</red>

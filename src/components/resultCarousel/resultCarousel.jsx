@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getProducts } from "../../services/products";
 import ProductCard from "../ProductCard/ProductCard";
 
-const ResultCarousel = () => {
+const ResultCarousel = (props) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -28,16 +28,19 @@ const ResultCarousel = () => {
         pauseOnHover: true,
         className: "slides",
     };
-    const filtered = products.filter(
-        (favourite) => favourite.favourited === false
-    );
+
     return (
         <Slider {...settings}>
-            {filtered.map((product) => (
-                <div className="classes.wrapper" key={product.id}>
-                    <ProductCard className="classes.sliderImg" data={product} />
-                </div>
-            ))}
+            {products
+                .filter((favourite) => favourite.favourited === true)
+                .map((product) => (
+                    <div className={classes.wrapper} key={product.id}>
+                        <ProductCard
+                            className={classes.sliderImg}
+                            data={product}
+                        />
+                    </div>
+                ))}
         </Slider>
     );
 };

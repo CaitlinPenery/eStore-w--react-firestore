@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getProducts } from "../../services/products";
 import ProductCard from "../../components/ProductCard/ProductCard";
+import ResultCarousel from "../../components/ResultCarousel/resultCarousel";
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
@@ -15,6 +16,7 @@ const ProductList = () => {
 
     return (
         <main>
+            <section></section>
             <h2>Products</h2>
             <section>
                 {products.map((product) => (

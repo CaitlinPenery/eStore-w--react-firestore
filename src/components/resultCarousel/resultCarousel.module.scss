@@ -3,13 +3,9 @@
 
 .wrapper {
     display: block;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
-
-.sliderImg {
-    display: block;
-    box-sizing: border-box;
-    height: 300px;
-    width: 100%;
-    padding: 0px 2vw;
-    object-fit: cover;
+.button {
+    display: none;
 }
