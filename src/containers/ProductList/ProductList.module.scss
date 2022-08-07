@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    &_title {
+        text-align: center;
+        font-size: 150%;
+    }
+    &_cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 85%;
+        height: 90%;
+        margin: 0 auto;
+        gap: 0.5em;
+    }
+}

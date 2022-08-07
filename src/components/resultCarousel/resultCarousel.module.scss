@@ -1,11 +1,22 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
-
-.wrapper {
-    display: block;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+* {
+    margin: none;
+    padding: none;
 }
-.button {
-    display: none;
+
+.slider {
+    // display: block;
+    // flex-direction: column;
+    // width: 95%;
+
+    &_title {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+    &_container {
+        display: block;
+        width: 95%;
+        margin-right: auto;
+        margin-left: 3.5%;
+    }
 }

@@ -4,6 +4,7 @@ import Modal from "../Modal/Modal";
 
 const ProductCard = ({ data }) => {
     const { name, brand, imageLink, description, price } = data;
+
     const [show, setShow] = useState(false);
 
     const image = data.imageLink
@@ -13,10 +14,15 @@ const ProductCard = ({ data }) => {
     return (
         <>
             <div className={classes.Card}>
-                <h2>{name}</h2>
-                <h3>{brand}</h3>
+                <div>
+                    <h2>{name}</h2>
+                    <h3>{brand}</h3>
+                </div>
                 <img className={classes.Card_Image} src={image} alt={name} />
-                <button onClick={() => setShow(true)}>More Info</button>
+                <div className={classes.Card_Btns}>
+                    <button>Buy Now</button>
+                    <button onClick={() => setShow(true)}>More Info</button>
+                </div>
 
                 <Modal
                     title={`${name} by ${brand}`}

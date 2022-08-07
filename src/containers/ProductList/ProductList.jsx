@@ -1,26 +1,32 @@
 import { useState, useEffect } from "react";
 import { getProducts } from "../../services/products";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import ResultCarousel from "../../components/ResultCarousel/resultCarousel";
+import classes from "./ProductList.module.scss";
+import { useAPI } from "../../context/context";
 
 const ProductList = () => {
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        const fetchProducts = async () => {
-            const products = await getProducts();
-            setProducts(products);
-        };
-        fetchProducts();
-    }, []);
+    // useEffect(() => {
+    //     const fetchProducts = async () => {
+    //         const products = await getProducts();
+    //         setProducts(products);
+    //     };
+    //     fetchProducts();
+    // }, []);
+
+    const { products } = useAPI();
 
     return (
-        <main>
-            <section></section>
-            <h2>Products</h2>
-            <section>
+        <main className={classes.container}>
+            <div className={classes.container_title}>
+                <h2>Products</h2>
+            </div>
+            <section className={classes.container_cards}>
                 {products.map((product) => (
-                    <ProductCard key={product.id} data={product} />
+                    <div key={product.id}>
+                        <ProductCard data={product} />
+                    </div>
                 ))}
             </section>
         </main>
