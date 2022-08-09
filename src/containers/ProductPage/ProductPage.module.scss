@@ -1,0 +1,35 @@
+.Product_Container {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+.Product_Image {
+    height: 270px;
+    width: 270px;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+.Product_Desc {
+    width: 700px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 140%;
+}
+
+.Product_Price {
+    font-size: 150%;
+    font-weight: bolder;
+    margin: 3px;
+}
+.Product_Btn {
+    margin-top: 15px;
+}
+.Product_Drop {
+    margin-bottom: 20px;
+}

@@ -1,5 +1,13 @@
+import React from "react";
+
+import CartItem from "../../components/CartItem";
+
 const ShoppingCart = () => {
-    return <div>ShoppingCart</div>;
+    return (
+        <div>
+            <CartItem />
+        </div>
+    );
 };
 
 export default ShoppingCart;

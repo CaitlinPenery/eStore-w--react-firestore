@@ -1,8 +1,7 @@
-import { Component } from "react";
 import Slider from "react-slick";
 import classes from "./resultCarousel.module.scss";
-import { useEffect, useState } from "react";
-import { getProducts } from "../../services/products";
+// import { useEffect, useState } from "react";
+// import { getProducts } from "../../services/products";
 import ResultsCard from "../ResultsCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -17,12 +16,13 @@ const ResultCarousel = () => {
     //     };
     //     fetchProducts();
     // }, []);
+
     const settings = {
         dots: false,
         infinate: false,
         autoplay: true,
         autoplaySpeed: 3000,
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1,
     };
     const { products } = useAPI();

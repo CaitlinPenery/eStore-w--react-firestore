@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import classes from "./ProductCard.module.scss";
-import Modal from "../Modal/Modal";
+// import Modal from "../Modal/Modal";
+import { NavLink } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
-    const { name, brand, imageLink, description, price } = data;
-
-    const [show, setShow] = useState(false);
+    const { title, id, variants } = data;
 
     const image = data.imageLink
         ? data.imageLink
@@ -14,14 +13,28 @@ const ProductCard = ({ data }) => {
     return (
         <>
             <div className={classes.Card}>
-                <div>
-                    <h2>{name}</h2>
-                    <h3>{brand}</h3>
+                <div className={classes.Card_Header}>
+                    <h2>{title}</h2>
                 </div>
-                <img className={classes.Card_Image} src={image} alt={name} />
+                <img className={classes.Card_Image} src={image} alt={title} />
+                <div>
+                    <div className={classes.Card_Color}>
+                        {variants.map((item) => (
+                            <div
+                                className={classes.Card_Color_Content}
+                                key={item}
+                                style={{ backgroundColor: `${item}` }}
+                            ></div>
+                        ))}
+                    </div>
+                </div>
                 <div className={classes.Card_Btns}>
-                    <button>Buy Now</button>
-                    <button onClick={() => setShow(true)}>More Info</button>
+                    <NavLink to={`/product/${id}`}>
+                        <button>More Info</button>
+                    </NavLink>
+                </div>
+                {/* Modal not in use */}
+                {/* <button onClick={() => setShow(true)}>More Info</button>
                 </div>
 
                 <Modal
@@ -32,7 +45,7 @@ const ProductCard = ({ data }) => {
                     <img className={classes.Card_Image} src={imageLink} />
                     <p>{description}</p>
                     <p>$ {price}</p>
-                </Modal>
+                </Modal> */}
             </div>
         </>
     );

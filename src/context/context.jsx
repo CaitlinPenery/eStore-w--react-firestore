@@ -5,19 +5,27 @@ const APIContext = createContext();
 
 export const APIContextProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
-
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         const fetchProducts = async () => {
             const products = await getProducts();
+
             setProducts(products);
+            setLoading(false);
         };
         fetchProducts();
     }, []);
 
     return (
-        <APIContext.Provider value={{ products }}>
-            {children}
-        </APIContext.Provider>
+        <>
+            {loading ? (
+                <h1>Loading...</h1>
+            ) : (
+                <APIContext.Provider value={{ products }}>
+                    {children}
+                </APIContext.Provider>
+            )}
+        </>
     );
 };
 

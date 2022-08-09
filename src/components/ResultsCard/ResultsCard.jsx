@@ -1,7 +1,7 @@
 import classes from "./ResultsCard.module.scss";
 
 const ResultsCard = ({ data }) => {
-    const { name, brand } = data;
+    const { title } = data;
 
     const image = data.imageLink
         ? data.imageLink
@@ -10,9 +10,8 @@ const ResultsCard = ({ data }) => {
     return (
         <>
             <div className={classes.Card}>
-                <h2>{name}</h2>
-                <h3>{brand}</h3>
-                <img className={classes.Card_Image} src={image} alt={name} />
+                <h2 className={classes.Card_Title}>{title}</h2>
+                <img className={classes.Card_Image} src={image} alt={title} />
             </div>
         </>
     );

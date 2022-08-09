@@ -1,6 +1,8 @@
+// MVP requires product page, so Modal not in use.
+
 import "./Modal.css";
 
-import { CSSTransition } from "react-transition-group";
+// import { CSSTransition } from "react-transition-group";
 
 const Modal = (props) => {
     return (
@@ -19,17 +21,18 @@ const Modal = (props) => {
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="modal__header">
+                    <div className="modal__btn_close">
+                        <button
+                            // className="modal__btn_close"
+                            onClick={props.onClose}
+                        >
+                            (x)
+                        </button>
+                    </div>
                     <h4 className="modal__title">{props.title}</h4>
-                    <button
-                        className="modal__btn_close"
-                        onClick={props.onClose}
-                    >
-                        (x)
-                    </button>
                 </div>
                 <div className="modal__body">{props.children}</div>
-            </div>
-            <div className="modal__footer">
+                <div className="modal__footer"></div>
                 <button className="modal__btn_addtocart">Add to Cart</button>
             </div>
         </div>
