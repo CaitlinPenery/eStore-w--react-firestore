@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import classes from "./resultCarousel.module.scss";
 // import { useEffect, useState } from "react";
 // import { getProducts } from "../../services/products";
+
 import ResultsCard from "../ResultsCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -24,6 +25,23 @@ const ResultCarousel = () => {
         autoplaySpeed: 3000,
         slidesToShow: 3,
         slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 890,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2,
+                },
+            },
+            {
+                breakpoint: 695,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     };
     const { products } = useAPI();
     return (
