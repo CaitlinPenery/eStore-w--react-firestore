@@ -10,6 +10,7 @@ const ProductPage = () => {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [decrement, setDecrement] = useState();
+    const [disable, setDisable] = useState(false);
 
     // useEffect(() => {
     //     getProductsById(id)
@@ -29,11 +30,14 @@ const ProductPage = () => {
 
     const onWatchButtonClick = async (id, quantity) => {
         await quantityWatchCount(id, quantity);
+        if (quantity <= 1) {
+            setDisable(true);
+        } else;
         setDecrement(quantity);
     };
 
     return (
-        <>
+        <div className={classes.Product}>
             {loading ? (
                 <h1>Loading...</h1>
             ) : (
@@ -61,6 +65,7 @@ const ProductPage = () => {
                     </p>
                     <button
                         className={classes.Product_Btn}
+                        disabled={disable}
                         onClick={() => {
                             onWatchButtonClick(product.id, product.quantity);
                         }}
@@ -69,7 +74,7 @@ const ProductPage = () => {
                     </button>
                 </div>
             )}
-        </>
+        </div>
     );
 };
 
