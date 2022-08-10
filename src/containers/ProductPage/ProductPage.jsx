@@ -4,9 +4,15 @@ import { getProductsById } from "../../services/products";
 import { quantityWatchCount } from "../../services/products";
 import classes from "./ProductPage.module.scss";
 
+// ToDo
+// Create pop up with choice to got to cart or continue shopping.
+// Change db data to link qty with varient
+// Use useEffect and useState to link varient and qty
+// Local storage for qty change when added to cart, only -
+// remove from db when actually purchased
+
 const ProductPage = () => {
     const { id } = useParams();
-    // const navigate = useNavigate(); Navigate to Home or Cart when Add to cart clicked
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [decrement, setDecrement] = useState();
@@ -37,7 +43,7 @@ const ProductPage = () => {
     };
 
     return (
-        <div className={classes.Product}>
+        <>
             {loading ? (
                 <h1>Loading...</h1>
             ) : (
@@ -74,7 +80,7 @@ const ProductPage = () => {
                     </button>
                 </div>
             )}
-        </div>
+        </>
     );
 };
 

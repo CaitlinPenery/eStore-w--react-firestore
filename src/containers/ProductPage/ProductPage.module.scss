@@ -1,3 +1,4 @@
+@import "./../../assets/devices";
 .Product_Container {
     display: flex;
     margin-top: 20px;
@@ -6,7 +7,9 @@
     color: white;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: auto;
+    min-height: 90vh;
+    text-align: center;
 }
 .Product_Image {
     height: 270px;
@@ -16,10 +19,12 @@
     margin-bottom: 25px;
 }
 .Product_Desc {
-    width: 700px;
+    width: auto;
+    max-width: 700px;
     text-align: center;
     margin-bottom: 30px;
     font-size: 140%;
+    padding: 10px;
 }
 
 .Product_Price {
@@ -29,6 +34,7 @@
 }
 .Product_Btn {
     margin-top: 15px;
+    margin-bottom: 30px;
 }
 .Product_Drop {
     margin-bottom: 20px;
