@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getProductsById } from "../../services/products";
-import { quantityWatchCount } from "../../services/products";
+import {
+    cartQtyWatchCount,
+    createCartItem,
+    getCartById,
+    getProductsById,
+    quantityWatchCount,
+    updateCart,
+} from "../../services/products";
+
 import classes from "./ProductPage.module.scss";
 
 // ToDo
-// Create pop up with choice to got to cart or continue shopping.
+// Create pop up with choice to goto cart or continue shopping.
 // Change db data to link qty with varient
 // Use useEffect and useState to link varient and qty
 // Local storage for qty change when added to cart, only -
@@ -17,29 +24,41 @@ const ProductPage = () => {
     const [loading, setLoading] = useState(true);
     const [decrement, setDecrement] = useState();
     const [disable, setDisable] = useState(false);
+    const [cartItem, setCartItem] = useState(null);
+    const [cart, setCart] = useState(null);
+    const [increment, setIncrement] = useState(null);
 
-    // useEffect(() => {
-    //     getProductsById(id)
-    //         .then(setProduct)
-    //         .finally(() => setLoading(false));
-    // }, [id]);
+    useEffect(() => {
+        const fetchCart = async () => {
+            const cart = await getCartById(id);
+            setCart(cart);
+        };
+        fetchCart();
+    }, [increment, id]);
 
     useEffect(() => {
         const wrapper = async () => {
             const product = await getProductsById(id);
             setProduct(product);
             setLoading(false);
+            setCartItem(product);
         };
 
         wrapper();
     }, [decrement, id]);
-
+    // Change product qty and add to cart
+    // Need to set ID to product ID and update if product ID already exists in cart.
     const onWatchButtonClick = async (id, quantity) => {
         await quantityWatchCount(id, quantity);
         if (quantity <= 1) {
             setDisable(true);
         } else;
         setDecrement(quantity);
+
+        if (cart.title === undefined) {
+            createCartItem(cartItem);
+        } else updateCart(id, cart.quantity);
+        setIncrement(cart.quantity);
     };
 
     return (
@@ -73,7 +92,11 @@ const ProductPage = () => {
                         className={classes.Product_Btn}
                         disabled={disable}
                         onClick={() => {
-                            onWatchButtonClick(product.id, product.quantity);
+                            onWatchButtonClick(
+                                product.id,
+                                product.quantity,
+                                cart.quantity
+                            );
                         }}
                     >
                         Add to Cart

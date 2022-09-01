@@ -1,10 +1,8 @@
 # eShop with React and Firestore
 
-### \_**[Launch the Live Site]()**\_
-
 ## Description
 
-This project is designed to reinforce your React learnings and make sure that you are comfortable with most aspect of the framework.
+This project is designed to reinforce React learnings and make sure that you are comfortable with most aspect of the framework.
 With this project you will practice how to:
 
 -   Fetch Data within a React App

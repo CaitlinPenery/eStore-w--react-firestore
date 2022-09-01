@@ -19,13 +19,18 @@ export const getProductsById = async (id) => {
     return { id: rawDoc.id, ...rawDoc.data() };
 };
 
+export const getCartById = async (id) => {
+    const collectionRef = firestore.collection("cart");
+    const docRef = collectionRef.doc(id);
+    const rawDoc = await docRef.get();
+    return { id: rawDoc.id, ...rawDoc.data() };
+};
+
 export const updateProduct = async (id, record) => {
     const collectionRef = firestore.collection("products");
     const docRef = collectionRef.doc(id);
     await docRef.update(record);
 };
-
-// Cart
 
 export const quantityWatchCount = async (id, quantity) => {
     const collectionRef = firestore.collection("products");
@@ -33,6 +38,16 @@ export const quantityWatchCount = async (id, quantity) => {
     const docRef = collectionRef.doc(id);
 
     await docRef.update({ quantity: quantity - 1 });
+
+    return true;
+};
+
+export const cartQtyWatchCount = async (id, quantity) => {
+    const collectionRef = firestore.collection("cart");
+
+    const docRef = collectionRef.doc(id);
+
+    await docRef.update({ quantity: quantity + 1 });
 
     return true;
 };
@@ -49,15 +64,16 @@ export const getCart = async () => {
     return cleanedDocuments;
 };
 
-export const createCartItem = async (record) => {
+export const createCartItem = async (cartItem) => {
+    cartItem.quantity = 1;
     const collectionRef = firestore.collection("cart");
-    await collectionRef.add(record);
+    await collectionRef.doc(cartItem.id).set(cartItem);
 };
 
-export const updateCart = async (id, record) => {
+export const updateCart = async (id, qty) => {
     const collectionRef = firestore.collection("cart");
     const docRef = collectionRef.doc(id);
-    await docRef.update(record);
+    await docRef.update({ quantity: qty + 1 });
 };
 
 export const deleteCart = async (id) => {
